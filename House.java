@@ -1,16 +1,18 @@
 package cartoon;
 
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import lab4.Constants;
 
 public class House {
+    private Rectangle _front, _leftWindow, _rightWindow, _door;
+    private Polygon _roof;
 
-    private Rectangle _front;
-
-    public House() {
-       // _front = new Rectangle(Constants.RECT_WIDTH, Constants.RECT_HEIGHT);
-       // _front.setFill(Color.RED);
+    public House(BorderPane housePane) {
+        _front = new Rectangle(Constants.HOUSE_WIDTH, Constants.HOUSE_HEIGHT);
+        _front.setFill(Color.RED);
+        _leftWindow = new Rectangle()
 
     }
 }
