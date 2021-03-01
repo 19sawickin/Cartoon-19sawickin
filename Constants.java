@@ -8,8 +8,8 @@ public class Constants {
     public static final double DOOR_WIDTH = HOUSE_WIDTH/5;
     public static final double DOOR_HEIGHT = 0.75*HOUSE_HEIGHT;
 
-    public static final double HOUSE_X_LOC = 10;
-    public static final double HOUSE_Y_LOC = 10;
+    public static final double HOUSE_X_LOC = 200;
+    public static final double HOUSE_Y_LOC = 200;
 
 
     public static final double L_WINDOW_X_LOC = HOUSE_X_LOC + 0.1*HOUSE_WIDTH;
