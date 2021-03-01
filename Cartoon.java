@@ -1,4 +1,4 @@
-package cartoon;
+/**package cartoon;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -28,3 +28,4 @@ public class Cartoon {
     }
     
 }
+**/
