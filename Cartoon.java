@@ -5,9 +5,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.*;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import javafx.scene.input.KeyEvent;
 
 public class Cartoon {
     // TODO: this is your top-level logic class! It should contain your event handlers, other "game" logic, and an instance of your composite shape!
@@ -28,7 +31,8 @@ public class Cartoon {
 
     public void setupTimeline() {
         KeyFrame frame1 = new KeyFrame(Duration.seconds(1), new MoveHandler());
-        Timeline timeline = new Timeline(frame1);
+        KeyFrame frame2 = new KeyFrame(Duration.millis(1), new KeyHandler());
+        Timeline timeline = new Timeline(frame1, frame2);
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -38,12 +42,28 @@ public class Cartoon {
         public void MoveHandler() {
             if(_house.getXLoc() > Constants.SCENE_WIDTH) {
                 _label = new Label("Hurry up and change my paint!");
-            } else _label = new Label("Press 'P' to change my paint color");
+            } else _label = new Label("Change my paint color");
         }
         public void handle(ActionEvent event) {
             if(_house.getXLoc() < Constants.SCENE_WIDTH) {
-                _house.setLocation(_house.getXLoc() + 20, _house.getYLoc() + 0);
+                _house.setLocation(_house.getXLoc() + 20, _house.getYLoc());
             } else _house.setLocation(Constants.HOUSE_X_LOC, Constants.HOUSE_Y_LOC);
+        }
+    }
+
+    private class KeyHandler implements EventHandler<KeyEvent> {
+
+        public void handle(KeyEvent event) {
+            switch(KeyEvent.getCode()) {
+                case R:
+                    House.getFront().setFill(Color.RED);
+                case B:
+                    House.getFront().setFill(Color.BLUE);
+                case G:
+                    House.getFront().setFill(Color.GREEN);
+                default:
+                    break;
+            }
         }
     }
 
@@ -53,5 +73,4 @@ public class Cartoon {
             System.exit(0);
         }
     }
-
 }

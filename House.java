@@ -1,4 +1,3 @@
-
 package cartoon;
 
 import javafx.scene.layout.Pane;
@@ -20,7 +19,8 @@ public class House {
         _door.setFill(Color.BLACK);
         _roof = new Polygon(Constants.HOUSE_X_LOC,Constants.HOUSE_Y_LOC,
                 Constants.HOUSE_X_LOC + Constants.HOUSE_WIDTH,Constants.HOUSE_Y_LOC,
-                Constants.HOUSE_X_LOC+0.5*Constants.HOUSE_WIDTH,Constants.HOUSE_Y_LOC-Constants.HOUSE_HEIGHT);
+                Constants.HOUSE_X_LOC+0.5*Constants.HOUSE_WIDTH,
+                Constants.HOUSE_Y_LOC-Constants.HOUSE_HEIGHT);
         _roof.setFill(Color.GRAY);
         this.setLocation(Constants.HOUSE_X_LOC, Constants.HOUSE_Y_LOC);
         housePane.getChildren().addAll(_front, _leftWindow, _rightWindow, _door, _roof);
@@ -35,6 +35,7 @@ public class House {
         _rightWindow.setY(y + 0.5*Constants.HOUSE_HEIGHT - 0.5*Constants.WINDOW_HEIGHT);
         _door.setX(x + 0.5*Constants.HOUSE_WIDTH - 0.5*Constants.DOOR_WIDTH);
         _door.setY(y + Constants.HOUSE_HEIGHT - Constants.DOOR_HEIGHT);
+        _roof.setTranslateX(x);
     }
 
     public double getXLoc() {
@@ -44,4 +45,9 @@ public class House {
     public double getYLoc() {
         return _front.getY();
     }
+
+    public Rectangle getFront() {
+        return _front;
+    }
+
 }
