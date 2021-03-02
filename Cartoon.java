@@ -5,7 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.*;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -20,6 +19,7 @@ public class Cartoon {
     public Cartoon(Pane housePane, HBox buttonPane) {
         _house = new House(housePane);
         this.setupBottomPane(buttonPane);
+        housePane.addEventHandler(KeyEvent.KEY_PRESSED, new KeyHandler());
         this.setupTimeline();
     }
 
@@ -31,8 +31,7 @@ public class Cartoon {
 
     public void setupTimeline() {
         KeyFrame frame1 = new KeyFrame(Duration.seconds(1), new MoveHandler());
-        KeyFrame frame2 = new KeyFrame(Duration.millis(1), new KeyHandler());
-        Timeline timeline = new Timeline(frame1, frame2);
+        Timeline timeline = new Timeline(frame1);
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -54,13 +53,13 @@ public class Cartoon {
     private class KeyHandler implements EventHandler<KeyEvent> {
 
         public void handle(KeyEvent event) {
-            switch(KeyEvent.getCode()) {
+            switch(event.getCode()) {
                 case R:
-                    House.getFront().setFill(Color.RED);
+                    _house.getFront().setFill(Color.RED);
                 case B:
-                    House.getFront().setFill(Color.BLUE);
+                    _house.getFront().setFill(Color.BLUE);
                 case G:
-                    House.getFront().setFill(Color.GREEN);
+                    _house.getFront().setFill(Color.GREEN);
                 default:
                     break;
             }
