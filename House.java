@@ -36,4 +36,12 @@ public class House {
         _door.setX(x + 0.5*Constants.HOUSE_WIDTH - 0.5*Constants.DOOR_WIDTH);
         _door.setY(y + Constants.HOUSE_HEIGHT - Constants.DOOR_HEIGHT);
     }
+
+    public double getXLoc() {
+        return _front.getX();
+    }
+
+    public double getYLoc() {
+        return _front.getY();
+    }
 }

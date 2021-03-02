@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         PaneOrganizer organizer = new PaneOrganizer();
-        Scene scene = new Scene(organizer.getRoot(), 500, 500);
+        Scene scene = new Scene(organizer.getRoot(), Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         stage.setScene(scene);
         stage.show();
 
