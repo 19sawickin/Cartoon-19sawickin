@@ -1,0 +1,24 @@
+cartoon README
+
+HANDIN:
+Final handin
+
+
+DESIGN CHOICES:
+For my composite shape, I decided to go with a house because I've always been super into
+HGTV and home renovations. I could literally spend an entire day watching flip or flop or
+House Hunters while browsing through Zillow. It's an unhealthy obsession haha.
+
+With that in mind, I constructed a house in its own separate Pane then added this Pane to
+the root pane, which I made a BorderPane. This border pane also contained an HBox at the bottom
+that held the Quit button and the changing label.
+
+Logically speaking, the App class contained the PaneOrganizer class, which contained my Cartoon class
+that served as the top-level class with a timeline, two event handlers, the house, and the label.
+
+
+KNOWN BUGS:
+No known bugs.
+
+HOURS SPENT:
+10
