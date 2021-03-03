@@ -32,8 +32,8 @@ public class Cartoon {
     }
 
     public void setupTimeline() {
-        KeyFrame frame1 = new KeyFrame(Duration.seconds(0.1), new MoveHandler());
-        Timeline timeline = new Timeline(frame1);
+        Timeline timeline = new Timeline
+                (new KeyFrame(Duration.seconds(0.1), new MoveHandler()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
