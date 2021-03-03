@@ -18,8 +18,10 @@ public class Cartoon {
 
     public Cartoon(Pane housePane, HBox buttonPane) {
         _house = new House(housePane);
+        _label = new Label("Hello");
         this.setupBottomPane(buttonPane);
         housePane.addEventHandler(KeyEvent.KEY_PRESSED, new KeyHandler());
+        housePane.setFocusTraversable(true);
         this.setupTimeline();
     }
 
@@ -30,7 +32,7 @@ public class Cartoon {
     }
 
     public void setupTimeline() {
-        KeyFrame frame1 = new KeyFrame(Duration.seconds(1), new MoveHandler());
+        KeyFrame frame1 = new KeyFrame(Duration.seconds(0.1), new MoveHandler());
         Timeline timeline = new Timeline(frame1);
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -38,15 +40,17 @@ public class Cartoon {
 
     private class MoveHandler implements EventHandler<ActionEvent> {
 
-        public void MoveHandler() {
-            if(_house.getXLoc() > Constants.SCENE_WIDTH) {
-                _label = new Label("Hurry up and change my paint!");
-            } else _label = new Label("Change my paint color");
+        public MoveHandler() {
+
         }
         public void handle(ActionEvent event) {
             if(_house.getXLoc() < Constants.SCENE_WIDTH) {
                 _house.setLocation(_house.getXLoc() + 20, _house.getYLoc());
             } else _house.setLocation(Constants.HOUSE_X_LOC, Constants.HOUSE_Y_LOC);
+
+            if(_house.getXLoc() > Constants.SCENE_WIDTH/2) {
+                _label.setText("Hurry up and change my paint!");
+            } else _label.setText("Change my paint color");
         }
     }
 
@@ -56,10 +60,13 @@ public class Cartoon {
             switch(event.getCode()) {
                 case R:
                     _house.getFront().setFill(Color.RED);
+                    break;
                 case B:
                     _house.getFront().setFill(Color.BLUE);
+                    break;
                 case G:
                     _house.getFront().setFill(Color.GREEN);
+                    break;
                 default:
                     break;
             }
