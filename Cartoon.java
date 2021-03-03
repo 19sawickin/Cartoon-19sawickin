@@ -16,19 +16,17 @@ public class Cartoon {
     private House _house;
     private Label _label;
 
-    public Cartoon(Pane housePane, HBox buttonPane) {
+    public Cartoon(Pane housePane, HBox bottomPane) {
         _house = new House(housePane);
         _label = new Label("Hello");
-        this.setupBottomPane(buttonPane);
+        this.setupBottomPane(bottomPane);
         housePane.addEventHandler(KeyEvent.KEY_PRESSED, new KeyHandler());
         housePane.setFocusTraversable(true);
         this.setupTimeline();
     }
 
-    public void setupBottomPane(HBox buttonPane) {
-        Button b1 = new Button("Quit");
-        b1.setOnAction(new QuitHandler());
-        buttonPane.getChildren().addAll(b1,_label);
+    public void setupBottomPane(HBox bottomPane) {
+        bottomPane.getChildren().add(_label);
     }
 
     public void setupTimeline() {
@@ -40,9 +38,6 @@ public class Cartoon {
 
     private class MoveHandler implements EventHandler<ActionEvent> {
 
-        public MoveHandler() {
-
-        }
         public void handle(ActionEvent event) {
             if(_house.getXLoc() < Constants.SCENE_WIDTH) {
                 _house.setLocation(_house.getXLoc() + 20, _house.getYLoc());
@@ -70,13 +65,6 @@ public class Cartoon {
                 default:
                     break;
             }
-        }
-    }
-
-    private class QuitHandler implements EventHandler<ActionEvent> {
-
-        public void handle(ActionEvent event) {
-            System.exit(0);
         }
     }
 }
